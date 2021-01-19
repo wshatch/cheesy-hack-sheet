@@ -1,0 +1,20 @@
+<div class="encumberance" title="Encumberance">
+  {{#if encumberanceBar.magicalItemsLoad}}
+    <div class="encumberance-bar magical-items" style="width:{{encumberanceBar.magicalItemsPercentage}}%" title="Magical Item Encumberance"><div>{{encumberanceBar.magicalItemsLoad}}</div></div>
+  {{/if}}
+  {{#if encumberanceBar.weaponsLoad}}
+    <div class="encumberance-bar weapons" style="width:{{encumberanceBar.weaponsPercentage}}%" title="Weapon encumberance">{{encumberanceBar.weaponsLoad}} </div>
+  {{/if}}
+  {{#if encumberanceBar.mundaneItemsLoad}}
+  <div class="encumberance-bar mundane-items" style="width:{{encumberanceBar.mundaneItemsPercentage}}%" title="Mundane Item encumberance">{{encumberanceBar.mundaneItemsLoad}} </div>
+  {{/if}}
+  {{#if encumberanceBar.suppliesLoad}}
+  <div class="encumberance-bar supplies" style="width:{{encumberanceBar.suppliesPercentage}}%" title="Supply Encumberance">{{encumberanceBar.suppliesLoad}} </div>
+  {{/if}}
+  {{#if encumberanceBar.goldLoad}}
+  <div class="encumberance-bar gold" style="width:{{encumberanceBar.goldPercentage}}%" title="Gold Encumberance"> {{encumberanceBar.goldLoad}} </div>
+  {{/if}}
+  {{#if encumberanceBar.freeLoad}}
+  <div class="encumberance-bar free" style="width:{{encumberanceBar.freePercentage}}%" title="Load left"> {{encumberanceBar.freeLoad}} </div>
+  {{/if}}
+</div>

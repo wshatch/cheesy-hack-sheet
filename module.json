@@ -1,0 +1,11 @@
+{
+	"name": "cheesy-hack-sheet",
+	"title": "Cheesy's hack",
+	"description": "Uses the character sheet for cheesy's homebrew",
+	"author": "Cheesy",
+	"version": "0.0.1",
+    "minimumCoreVersion": "0.5.0",
+	"systems": ["dnd5e"],
+	"esmodules": ["./cheesy_hack.js"],
+    "styles": ["./styles/cheesy-sheet.css"]
+}

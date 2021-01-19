@@ -1,0 +1,158 @@
+<form class="{{cssClass}} flexcol" autocomplete="off">
+  <div class="cheesy">
+    <section class="header">
+      <div>
+        <ul class="important-attributes">
+          <li class="attribute-details">
+            <span class="name"> {{name}} </span>
+             
+            {{#each classes as |class|}}
+              <span class="level"> Level {{class.levels}} {{class.name}}</span>
+              <span class="subclass"> {{class.subclass}}</span>
+            {{/each}}
+            
+          </li>
+          <li class="attribute-details">
+            <span class="small-attribute"> 
+              <span> xp </span>
+              <div class="input">
+                <input class="current" data-dtype="Number" value="{{xp}}" name="data.details.xp.value" maxlength="7"/>
+                <p> / </p>
+                <span> {{maxXp}}</span>
+              </div>
+            </span>
+
+            <span class="small-attribute">
+              <span> Exhaustion </span>
+              <div class="input">
+                <input class="current" data-dtype="Number" value={{data.attributes.exhaustion}} name="data.attributes.exhaustion" />
+                <span> / </span>
+                <span>6</span>
+              </div>
+            </span>
+            <span class="small-attribute">
+              <span> Hit dice </span>
+              <span> <input value="{{ hitDice }}" />/{{maxHitDice}} </span>
+            </span>
+            <span class="small-attribute">
+              <span> Inspiration </span>
+              <span> {{inspiration}}  </span>
+            </span>
+          </li>
+        </ul>
+        <ul class="important-attributes">
+          <li class="proficency">
+            <h3> Proficency </h3>
+            <span class="value"> {{proficency}} </span>
+          </li>
+          <li class="perception">
+            <h3> Perception </h3>
+            <span class="value"> {{perception}} </span>
+          </li>
+          <li class="hp">
+             <h3> HP </h3>
+             <span class="value">
+               <input class="current" value="{{currentHp}}" data-dtype="Number" name="data.attributes.hp.value">
+               <span> / </span>
+               <input class="max" value="{{maxHp}}" data-dtype="Number" name="data.attributes.hp.max" /> 
+             </span>
+             <span class="temphp">
+               <h5> temp </h5>
+               <input class="temp" value="{{tempHp}}" data-dtype="Number" name="data.attributes.hp.temp">
+             </span>
+          </li>
+          <li class="ac">
+            <h3> AC </h3>
+            <input class="value" data-dtype="Number" name="data.attributes.ac.value" value="{{ac}}" />
+          </li>
+        </ul>
+      </div>
+      <div>
+        <div class="control-buttons">
+          <span class="rest long-rest btn"> Long rest </span>
+          <span class="rest short-rest btn"> Short rest </span>
+        </div>
+        <div class="damages">
+          <div class="damage-type">
+            <span> Resistances </span>
+            <ul class="resistances odd"> 
+              {{#each resistances as |resistance|}}
+                <li> {{resistance}} </li>
+              {{/each}}
+            </ul>
+          </div>
+          <div class="damage-type">
+            <span> Weaknesses </span>
+            <ul class="weaknesses even">
+              {{#each weaknesses as |weakness|}}
+                <li> {{weakness}} </li>
+              {{/each}}
+            </ul>
+          </div>
+          <div class="damage-type">
+            <span> Immunities </span>
+            <ul class="immunities odd">
+              {{#each immunities as |immunity|}}
+                <li> {{immunity}} </li>
+              {{/each}}
+            </ul>
+          </div>
+        </div>
+      </div>
+      <ul class="ability-scores">
+        {{#each abilities as |ability|}}
+          <li class="ability" data-ability="{{ability.id}}">
+            <div class="ability-values">
+              <span class="ability-score" name="data.abilities.{{ability.id}}.value"> 
+                <input value="{{ability.value}}" name="data.abilities.{{ability.id}}.value" data-dtype="Number" placeholder="10" maxlength="2" /> 
+              </span>
+              <span class="ability-abrv">  {{id}} </span>
+              <span class="ability-mod" name="data.attributes.{{ability.id}}.mod"> {{ability.mod}} </span>
+            </div>
+            <div class="rollbuttons">
+              <span class="ability-save rollable btn" data-attr="{{id}}"> Save </span>
+              <span class="ability-check rollable btn" data-attr="{{id}}"> Check </span>
+            </div>
+          </li>
+        {{/each}}
+      </ul>
+
+    </section>
+
+    <section class="sheet-body" >
+    {{> "modules/cheesy-hack-sheet/templates/parts/cheesy-main.html"}}
+    {{> "modules/cheesy-hack-sheet/templates/parts/cheesy-spells.html"}}
+    {{> "modules/cheesy-hack-sheet/templates/parts/cheesy-inventory.html"}}
+    {{> "modules/cheesy-hack-sheet/templates/parts/cheesy-features.html"}}
+    {{> "modules/cheesy-hack-sheet/templates/parts/cheesy-notes.html"}}
+
+    </section>
+    <footer class="sheet-footer">
+      {{> "modules/cheesy-hack-sheet/templates/parts/cheesy-encumberance.html"}}
+      <div class="stats">
+       <span class="{{encumberanceBar.encumbered}}" >
+         Load: {{encumberanceBar.totalLoad}} / {{encumberanceBar.maxLoad}}
+       </span>
+       <div>
+          <span> Gold</span>
+          <input class="current" value="{{gold}}" data-dtype="Number" name="data.currency.gp"/>
+       </div>
+       <div>
+          <span> Silver </span>
+          <input class="current" value="{{silver}}" data-dtype="Number" name="data.currency.sp"/>
+       </div>
+       <div>
+        Supplies:
+        <input class="supplies" data-dtype="Number" value={{supplies}} name="flags.cheesy.supplies"/> / <span> {{maxSupplies}} </span>
+       </div>
+      </div>
+      <nav class="flex cheesy-navigation tabs" data-group="primary">
+        <a class="item active" data-attributes="main" data-tab="main"> Main </a>
+        <a class="item" data-attributes="spells" data-tab="spells"> Spells </a>
+        <a class="item" data-attributes="feats" data-tab="feats"> Feats </a>
+        <a class="item" data-attributes="inventory" data-tab="inventory"> Inventory </a>
+        <a class="item" data-attributes="notes" data-tab="notes"> Notes </a>
+      </nav>
+    </footer>
+  </div>
+</form>

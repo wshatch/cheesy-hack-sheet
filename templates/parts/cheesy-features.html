@@ -1,0 +1,31 @@
+<div class="tab" data-tab="feats">
+  <h2> Feats </h2>
+  <ul class="actions features large-items">
+    <li class="actions-header abilities-header">
+      <div> Name </div>
+      <div> Controls </div>
+    </li>
+    {{#each features as |feat|}}
+      <li class="item" draggable=true style="display: flex; flex-wrap: wrap" data-item-id="{{feat.id}}">
+        <div class="item-name">
+          <div class="item-image" style="background-image: url({{feat.image}})">
+            <i class="fa fa-dice-d20"></i>
+          </div>
+          <h4 title="Toggle Info ({{item.name}})">
+            <i class="fas fa-info-circle info-icon"></i>
+          </h4>
+          {{feat.name}}
+        </div>
+        <div class="item-controls">
+          <div class="item-control item-edit" title="Edit Feat">
+            <i class="fa fa-pencil-alt"></i>
+          </div>
+          <div class="item-control item-delete" title="Delete Feat">
+            <i class="fa fa-trash"></i>
+          </div>
+        </div>
+        <div style="flex-basis: 100%; width:0"></div>
+      </li>
+    {{/each}} 
+  </ul>
+</div>

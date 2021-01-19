@@ -1,0 +1,696 @@
+:root {
+	--default-primary-color: rgba(0,0,0,.87);
+	--default-light-color: rgba(0,0,0,.2);
+	--default-secondary-color: rgba(0,0,0,.65);
+	--default-tertiary-color: rgba(0,0,0,.4);
+
+    --default-border-color: #245c74;
+
+    --default-magic-primary-color: #13293D;
+    --default-magic-secondary-color: #b3d89c;
+    --default-magic-ternary-color: #77A6B6;
+
+    --default-mundane-primary-color: #99130A;
+    --default-mundane-secondary-color: #CB7467;
+    --default-mundane-ternary-color: #E58F65;
+
+    --default-gold-color: #F5A700;
+
+	--default-faint-color: rgba(0,0,0,.075);
+
+    --border-color: #245c74;
+}
+
+.cheesy .tab {
+  overflow: auto;
+}
+/* font settings */
+
+.cheesy h1,
+.cheesy h2,
+.cheesy h3,
+.cheesy h4 {
+	font-family: "Modesto Condensed", "Palatino Linotype", serif;
+	font-weight: 700;
+	/*font-family: "Nodesto", "Signika", serif;*/
+	margin: 0;
+	padding: 0;
+	border: none;
+}
+
+.cheesy.sheet.actor .ability-scores {
+	font-family: "Modesto Condensed", "Palatino Linotype", serif;
+    display: flex;
+    justify-content: space-between;
+    margin: 1em 0 1em 0;
+    padding-top: 1em;
+    border-top: 1px solid var(--border-color);
+}
+
+.cheesy section.header {
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid var(--border-color);
+  margin: 0 1.5em 1em 1.5em;
+}
+
+.cheesy section.header div{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cheesy li {
+  list-style: none;
+}
+
+.cheesy input {
+  width: 2rem;
+  background: transparent;
+  border: 1px solid transparent;
+  font-size: .8em;
+  text-align: right;
+  font-weight: bold;
+}
+
+.cheesy input:hover {
+  border: 1px solid var(--border-color);
+}
+
+.cheesy .important-attributes {
+  display: flex;
+  flex-direction: row;
+  align-items: baseline;
+  justify-content: space-between;
+  width: 45%;
+  padding: 0 0 1em 0;
+}
+
+.cheesy .important-attributes span,
+.cheesy .important-attributes input {
+  justify-content: center;
+  display: flex;
+}
+
+.cheesy .important-attributes .value {
+  font-size: 1.6em;
+}
+
+.cheesy .actions .spell-header .value{
+  font-weight: bold;
+  float: right;
+}
+
+.cheesy .spells tr {
+  display: flex;
+  justify-content: space-between;
+}
+
+
+.cheesy .attribute-details {
+  align-items: flex-start;
+}
+.cheesy .important-attributes li {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+}
+
+.cheesy .important-attributes h3 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+}
+
+.hp {
+  justify-content: center !important;
+  display: inline-flex;
+}
+
+div.input {
+  justify-content: flex-end;
+  display:flex;
+  flex-direction: row;
+  align-items: baseline;
+  height: 0px;
+}
+
+div.damages {
+  display: flex;
+  align-items: flex-start !important;
+  flex-direction: column !important;
+}
+
+.damage-type {
+  display: flex;
+  flex-direction: row;
+}
+
+.damage-type span {
+  font-weight: bold;
+  margin-right: 3em;
+}
+
+.damage-type ul{
+  display: flex;
+  flex-direction: row;
+  min-width: 9em;
+}
+
+.resistances li {
+  margin-right: .5em;
+}
+
+.control-buttons {
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-top: 1em;
+}
+.cheesy .btn {
+  font-size: .8em;
+  padding: .5em .75em;
+  border-radius: .2em;
+  color: #FFF;
+  cursor: pointer;
+}
+
+.cheesy .weapons-header {
+  background-color: var(--default-mundane-secondary-color);
+}
+
+.cheesy .magic-items-header {
+  background-color: #77A6B6 
+}
+.control-buttons .long-rest {
+  background-color: var(--default-magic-primary-color);
+}
+
+.control-buttons .short-rest {
+  background-color: var(--default-mundane-primary-color);
+}
+
+.small-attribute{
+  align-items: baseline;
+  justify-content: space-between !important;
+  display: inline-flex;
+  width: 100%;
+}
+
+.xp input {
+  width: 2.8rem;
+}
+
+.current {
+  text-align: right;
+}
+
+.max {
+  text-align: left;
+}
+
+
+.cheesy.dnd5e.sheet.actor {
+	min-width: 740px;
+	height: 720px;
+	min-height: 210px;
+}
+
+.cheesy .inventory-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.cheesy .inventory-list .inventory-header {
+  background: #0000FF;
+  color: #FFFFFF;
+  flex-direction: row;
+  display: flex;
+}
+
+.cheesy .inventory-list .inventory-header h3 {
+  display: inline-block;
+  flex: initial;
+  cursor: pointer;
+}
+
+.cheesy .inventory-list .item-detail {
+  margin: 0 10px 0 10px;
+}
+
+/* flex class */
+.cheesy.sheet.actor .flex {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.cheesy {
+	display: flex;
+	flex-direction: column;
+	height: 100%;
+	overflow: hidden; 
+}
+
+.cheesy .sheet-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  padding: 0 1.5em;
+  height: 0px;
+}
+
+.cheesy nav .active {
+  border-bottom: 1px solid #0000FF;
+}
+
+.cheesy .sheet-footer {
+  margin: 0 1.5em;
+  flex-direction: column !important;
+}
+
+.cheesy .actions-body {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.cheesy .actions-group {
+  display: flex;
+  flex-direction: column;
+  width: 45%;
+  padding-right: 1em;
+}
+
+.cheesy .actions-body .actions {
+  padding: 0 0 2em 0em;
+  display: flex;
+  flex-direction: column;
+}
+
+.cheesy .actions li{
+  padding: 2px;
+}
+
+.cheesy .actions li:nth-child(even){
+  background-color: rgba(255, 255, 255, 0.2);
+}
+
+
+.cheesy ul {
+  padding: 0;
+  margin: 0;
+}
+.cheesy .actions .headers {
+  justify-content: space-between;
+  display: flex;
+}
+.cheesy .actions .headers h3{
+  display: inline-flex;
+}
+
+.cheesy .actions .actions-header{
+  width: 100%;
+  color: #000;
+  text-shadow: 0 0 #fff;
+  font-weight: normal;
+  text-align:left;
+}
+
+.cheesy .actions .actions-header th{
+  font-weight: 400;
+}
+
+.cheesy .actions .spell-header{
+  background: var(--default-magic-secondary-color);
+}
+
+.cheesy .actions .mundane-items-header{
+  background: var(--default-mundane-ternary-color);
+}
+
+.cheesy .actions .abilities-header {
+  background: #B36B82;
+}
+
+.cheesy .large-items td,
+.cheesy .large-items th,
+.cheesy .large-items div{
+  width: 120px;
+}
+
+.large-items .actions-header {
+  display: flex;
+}
+
+.cheesy .large-spells div,
+.cheesy .large-items div
+{
+  width: 120px;
+  display: flex;
+}
+
+.cheesy .large-spells td,
+.cheesy .large-spells div,
+.cheesy .large-items td
+{
+  height: 36px;
+}
+
+.cheesy .large-items .prepared {
+  background-color: var(--default-magic-ternary-color) !important;
+}
+
+
+.cheesy.sheet.actor .overcount{
+  color: var(--default-mundane-primary-color);
+}
+
+.cheesy.sheet.actor .ability-scores .ability .proficiency-toggle {
+	font-size: 10px;
+	line-height: 10px;
+	opacity: .4;
+	transition: opacity .3s ease;
+}
+
+.cheesy.sheet .spell-controls,
+.cheesy.sheet .item-controls
+{
+  display: flex;
+  flex-direction: row;
+  align-content: space-between;
+}
+
+.cheesy.sheet .spell-controls div,
+.cheesy.sheet .item-controls div
+ {
+  margin-right: 1em;
+  cursor: pointer;
+}
+
+.cheesy.sheet.actor .ability-scores .ability .ability-modifiers .ability-proficiency {
+	line-height: 10px;
+}
+
+.cheesy.sheet.actor .ability-scores .ability:hover .proficiency-toggle {
+	opacity: 1;
+}
+
+.cheesy.sheet.actor .ability {
+  width: 5em; 
+}
+
+.cheesy.sheet.actor .ability .rollbuttons{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between; 
+  margin-top: 1em;
+}
+
+.cheesy .rollbuttons .ability-save{
+  background-color: var(--default-magic-primary-color);
+}
+
+.cheesy .rollbuttons .ability-check{
+  background-color: var(--default-mundane-primary-color);
+}
+
+.cheesy.sheet.actor .ability-abrv {
+  font-weight: bold;
+  font-size: 1.3em;
+}
+
+.cheesy .resources ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.cheesy .resources li {
+  display: flex;
+  flex-direction: column;
+}
+
+.cheesy.sheet.actor .ability-values {
+  display: flex;
+  flex-direction: row;
+  font-size: 1.2em;
+  padding: 0 5px;
+}
+
+.cheesy.sheet.actor .ability-values input{
+  font-size: 1em;
+  width: 1.5em;
+  padding-top: 4px;
+  font-weight: 400;
+}
+
+.cheesy.sheet .ability-mod {
+  width: 1.2em;
+  text-align: right;
+}
+
+/* editor */
+.cheesy .notes li {
+  list-style: disc;
+}
+.cheesy .left-notes {
+	margin-right: 1rem;
+}
+
+.cheesy.limited .note-entries {
+  display: flex;
+  height: 100%;
+  align-items: stretch;
+}
+
+
+.cheesy .note-entries article {
+	background: var(--default-faint-color);
+	border-radius: 5px;
+	padding: .5rem;
+	margin-bottom: 1rem;
+	position: relative;
+}
+
+.cheesy.limited .note-entries article {
+  flex: 1;
+  margin: 0;
+}
+
+.cheesy .note-entries article:last-child {
+	margin-bottom: 0;
+}
+
+.cheesy.limited .note-entries article:last-child {
+  margin-left: 8px;
+}
+
+
+.cheesy .note-entries article:hover .editor .editor-edit {
+	display: block;
+	padding: 0;
+	border: none;
+	box-shadow: none;
+}
+
+.cheesy.sheet.actor .note-entries article .section-titles {
+	font-weight: 700;
+	border-bottom: 1px solid var(--default-light-color);
+	padding-bottom: .25rem;
+	margin-bottom: .5rem;
+    font-size: 1.5em;
+}
+
+.cheesy.sheet.actor .note-entries article .section-titles input {
+	margin-top: -1px;
+	margin-left: -1px;
+	height: 17px;
+    width: calc(100% - 26px);
+	font-weight: 700;
+    text-align: left;
+}
+
+.cheesy.sheet.actor .note-entries article .editor,
+.cheesy.sheet.actor .note-entries article .editor .editor-content {
+	min-height: 50px;
+	padding: 0;
+	position: static;
+}
+
+.cheesy.sheet.actor .note-entries article .editor .editor-content ul {
+	list-style: disc;
+	padding-left: 20px;
+}
+
+.cheesy.sheet.actor .note-entries article.biography-notes .editor {
+	min-height: 271px;
+}
+
+.cheesy.sheet.actor .note-entries article.journal-notes .editor {
+	min-height: 382px;
+}
+
+.cheesy.sheet.actor .note-entries article .editor .editor-content,
+.cheesy.sheet.actor .note-entries article .editor .tox .tox-toolbar__group {
+	padding: 0;
+}
+
+.cheesy.sheet.actor .note-entries article .editor .tox .tox-tbtn {
+	width: 24px;
+	height: 24px;
+}
+
+.cheesy.sheet.actor .note-entries article .editor .tox.tox-tinymce .tox-tbtn[title="Formats"] {
+	width: 90px;
+}
+
+.cheesy.sheet.actor .note-entries article .editor .tox .tox-tbtn--select {
+	width: auto;
+}
+
+.cheesy.sheet.actor .editor ul,
+.cheesy.sheet.actor .editor ol {
+	list-style: outside;
+  margin: 0.5em 0;
+  padding: 0 0 0 1.5em;
+}
+
+.cheesy.sheet.actor .editor {
+    min-height: 382px;
+    display: flex;
+    flex-direction: column;
+}
+
+.cheesy.sheet.actor .tox.tox-tinymce {
+    border: none;
+    flex: 1;
+    min-height: 100px;
+}
+
+.cheesy.sheet.actor .item-image {
+	width: 25px;
+	height: 25px;
+    flex: 0 0 23px;
+	border-radius: 0;
+    background-size: cover;
+    margin-right: 4px;
+	cursor: pointer;
+    display: inline-flex;
+}
+.cheesy.sheet.actor .item .item-image:hover {
+  background-image: none !important;
+}
+
+.cheesy.sheet.actor .item .item-image i {
+  color: #333;
+  display: none;
+  text-align: center;
+  font-size: 22px;
+  width: 25px;
+  height: 25px;
+}
+.cheesy.sheet.actor .item .item-image:hover i{
+  display: initial;
+}
+.cheesy.sheet.actor .item .item-image:hover i:before{
+  margin-right: 0px;
+}
+
+.cheesy.sheet.actor .item h4 {
+  margin-right: .2em;
+}
+
+.cheesy.sheet.actor .encumberance {
+  font-size: .8em;
+  border: #000;
+  color: #cde4ff;
+  display: flex;
+  line-height: 1.0em;
+  font-weight: bold;
+}
+
+.cheesy.sheet.actor .encumberance div{
+  border-top: 2px solid #245c74;
+  border-bottom: 2px solid #245c74;
+  height: 1.4em;
+  text-align: center;
+}
+
+.cheesy.sheet.actor .encumberance .magical-items {
+  background: #77A6B6;
+}
+
+.cheesy.sheet.actor .encumberance .mundane-items {
+  background: var(--default-mundane-ternary-color);
+}
+
+.cheesy.sheet.actor .encumberance .weapons {
+  background: var(--default-mundane-secondary-color);
+}
+.cheesy.sheet.actor .encumberance .supplies{
+  background: var(--default-mundane-primary-color);
+}
+
+.cheesy.sheet.actor .encumberance .gold {
+  background: var(--default-gold-color);
+}
+
+.cheesy.sheet.actor .encumberance .free{
+  background: #112933;
+}
+.cheesy.sheet.actor .encumberance div:last-child{
+  border-radius: 0px 5px 5px 0px;
+  border-right: 2px solid #245c74;
+}
+
+.cheesy.sheet.actor .encumberance div:first-child{
+  border-radius: 5px 0px 0px 5px;
+  border-left: 2px solid #245c74;
+}
+
+.cheesy.sheet.actor .encumbered {
+  color: var(--default-mundane-primary-color);
+}
+
+.cheesy.sheet.actor .stats {
+  display: flex;
+  justify-content: space-between;
+}
+
+.cheesy.sheet.actor .item-summary {
+  flex-grow: 100;
+  flex-direction: column;
+  margin-top: 10px;
+}
+
+.cheesy .item-properties {
+  flex-direction: row;
+  width: 100% !important;
+  flex-wrap: wrap;
+}
+
+.cheesy .item-properties .item-buttons {
+  flex-direction: row;
+  width: 100%;
+  flex-grow: 100;
+}
+
+.cheesy .item-properties span {
+  margin: 0 5px;
+}
+
+.cheesy .item-properties span:first-child{
+  margin-left: 0
+}
+
+.cheesy .temphp{
+  margin: 0;
+}
+.cheesy .temphp h5{
+  margin: 0;
+}

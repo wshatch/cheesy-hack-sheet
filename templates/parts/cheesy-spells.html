@@ -1,0 +1,58 @@
+<div class="tab" data-tab="spells">
+  <h2 class="{{preparedCssClass}}" > Prepared spells: {{preparedSpellCount}} / {{maxPreparedSpells}} </h2>
+  {{#each spells as |spellData level| }}
+  <ul class="actions spells large-items">
+    <li class="actions-header spell-header">
+      <div>
+        {{level}}
+      </div>
+      <div>
+        Components
+      </div>
+      <div>
+        Damage
+      </div>
+      <div>
+        Range
+      </div>
+      <div>
+        Prepartion Mode
+      </div>
+      <div>
+        Controls
+      </div>
+    </li>
+    {{#each spellData.spells as |spell|}}
+      <li class="item {{spell.prepared}}" data-item-id="{{spell.id}}" draggable=true style="display: flex; flex-wrap: wrap">
+        <div class="item-name"> 
+          <div class="item-image" style="background-image: url({{spell.image}})">
+            <i class="fa fa-dice-d20"></i>
+          </div>
+          <h4 title="Toggle Info ({{item.name}})">
+            <i class="fas fa-info-circle info-icon"></i>
+          </h4>
+          {{spell.name}}
+        </div>
+        <div> {{spell.components}} </div>
+        <div> {{spell.damage}} </div>
+        <div> {{spell.range}} </div>
+        <div> {{spell.preparationMode}} </div>
+        <div class="spell-controls">
+          <div class="item-control item-edit" title="Edit Spell">
+            <i class="fa fa-pencil-alt"></i>
+          </div>
+          {{#canPrepare }}
+          <div class="item-control item-toggle" title="Prepare Spell">
+            <i class="fa fa-book"></i>
+          </div>
+          {{/canPrepare}}
+          <div class="item-control item-delete" title="Delete Spell">
+            <i class="fa fa-trash"></i>
+          </div>
+        </div>
+        <div style="flex-basis: 100%; width:0"></div>
+      </li>
+    {{/each}}
+  </ul>
+  {{/each}}
+</div>

@@ -1,0 +1,155 @@
+<div class="tab" data-tab="main">
+  <div class="actions-body">
+    <div class="actions-group">
+      {{#renderSpells}}
+      <div class="actions magic">
+        <div class="headers">
+          <div>
+            <h3> Spell Save  </h3>
+            <span> DC {{spellDc}}</span>
+          </div>
+          <div>
+            <h3> Spell Attack </h3>
+            <span> {{spellAttack}} </span> 
+          </div>
+        </div>
+        {{#each preparedSpells as |spellData level| }}
+        <table class="spells">
+          <tr class="actions-header spell-header">
+            <th class="title">
+              {{level}}
+            </th>
+            <th class="value">
+              {{spellData.currentSpellSlots}}/{{spellData.maxSpellSlots}}
+            </th>
+          </tr>
+          {{#each spellData.spells as |spell| }}
+            <tr class="item" data-item-id="{{spell.id}}" draggable=true>
+              <td>
+                <div class="item-image" style="background-image: url({{spell.image}})">
+                  <i class="fa fa-dice-d20"></i>
+                </div>
+                {{spell.name}}
+              </td>
+              <td>
+              </td>
+            </tr>
+          {{/each}}
+        </table>
+        {{/each}}
+      </div>
+      {{/renderSpells}}
+      <div class="actions magic-items">
+        <h3> Magical Items </h3>
+        <table class="magic-items">
+          <tr class="actions-header magic-items-header">
+            <th> Name </th>
+            <th> Charges </th>
+            <th> Load </th>
+          </tr>
+          {{#each magicalItems as |item| }}
+            <tr>
+              <td> {{ item.name }} </td>
+              <td> 0 </td>
+              <td> 0 </td> 
+            </tr>
+          {{/each}}
+        </table>
+      </div>
+
+    </div>
+    <div class="actions-group">
+      <div class="actions weapons">
+        <div class="headers">
+          <div>
+            <h3> Melee Attack </h3> 
+            <span> {{ meleeAttack }}</span>
+          </div>
+          <div>
+            <h3> Ranged Attack  </h3>
+            <span> {{ rangeAttack }}  </span>
+          </div>
+        </div>
+        <table class="weapons">
+          <tr class="actions-header weapons-header">
+            <th> Name </th>
+            <th> Range </th>
+            <th> Load </th>
+            <th> Durability </th>
+            <th> Charges </th>
+          </tr>
+          {{#each weapons as |weapon| }}
+          <tr class="item" data-item-id="{{weapon.id}}" draggable=true>
+              <td class="item-name rollable"> 
+                <div class="item-image" style="background-image: url({{weapon.image}})">
+                  <i class="fa fa-dice-d20"></i>
+                </div>
+                {{weapon.name}} 
+              </td>
+              <td> {{weapon.range}} </td>
+              <td> {{weapon.load}} </td>
+              <td> {{weapon.durability}} </td>
+              <td> {{weapon.charges}} </td>
+          </tr>
+          {{/each}}
+         </table>
+      </div>
+
+      {{#hasResources}}
+      <div class="actions resources">
+        <h3> Resources </h3>
+        <ul>
+          {{#each resources as |resource|}}
+            <li> 
+              {{resource.title}}
+                <div style="display: flex; flex-direction: row">
+                  <input class="current-resource" value={{resource.value}} />
+                  /
+                  {{resource.max}}
+                </div>
+            </li>
+          {{/each}}
+        </ul>
+      </div>
+      {{/hasResources}}
+      <div class="actions features">
+        <h3> Active Abilities </h3>
+        <ul>
+          <li class="actions-header abilities-header"> 
+            <span> Name </span>
+          </li>
+          {{#each activeFeatures as |feat|}}
+            <li class="item" data-item-id="{{feat.id}}" draggable=true> 
+              <div class="item-image" style="background-image: url({{feat.image}})">
+                <i class="fa fa-dice-d20"></i>
+              </div>
+              {{feat.name}} 
+            </li>
+          {{/each}}
+        </ul>
+      </div>
+
+      <div class="actions mundane-items">
+        <div class="headers">
+          <div>
+            <h3> Mundane Items </h3>
+          </div>
+        </div>
+        <table>
+          <tr class="actions-header mundane-items-header">
+            <th> Name </th>
+            <th> Load </th>
+            <th> Charges </th>
+          </tr>
+          {{#each mundaneItems as |item| }}
+          <tr>
+            <td> {{ item.name }} </td>
+            <td> {{ item.load }} </td>
+            <td> {{ item.charges }} </td>
+          </tr>
+          {{/each}}
+        </table>
+      </div>
+    </div>
+  </div>
+</div>

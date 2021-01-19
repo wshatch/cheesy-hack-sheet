@@ -1,0 +1,56 @@
+<div class="tab" data-tab="inventory">
+    {{localize item.label}}
+    {{#each inventory as |items type|}}
+    <h2> {{type}} </h2>
+    <ul class="actions items large-items">
+      <li class="actions-header mundane-items-header">
+        <div> Name </div>
+        <div> Load </div>
+        <div> Charges </div>
+        <div> Durability </div>
+        <div> Controls </div>
+      </li>
+      {{#each items as |item|}}
+      <li class="item" data-item-id="{{item.id}}" draggable=true style="display: flex; flex-wrap: wrap">
+        <div class="item-name"> 
+          <div class="item-image" style="background-image: url({{item.image}})">
+            <i class="fa fa-dice-d20"></i>
+          </div>
+          <h4 title="Toggle Info ({{item.name}})">
+            <i class="fas fa-info-circle info-icon"></i>
+          </h4>
+          {{item.name}} 
+        </div>
+        <div> {{item.load}} </div>
+        <div> {{item.charges}} </div>
+        <div> {{item.durability}} </div>
+        <div class="item-controls">
+          {{#item.restockable}}
+          <div class="item-control item-restock" title="Restock Item">
+            <i class="fa fa-shopping-bag"></i>
+          </div>
+          {{else}}
+          <div>
+          </div>
+          {{/item.restockable}}
+          <div class="item-control item-edit" title="Edit Item">
+            <i class="fa fa-pencil-alt"></i>
+          </div>
+          {{#item.equipped}}
+          <div class="item-control item-toggle" title="Unequip Item">
+            <i class="fa fa-user-alt-slash"></i>
+          </div>
+          {{else}}
+          <div class="item-control item-toggle" title="Equip Item">
+            <i class="fa fa-user"></i>
+          </div>
+          {{/item.equipped}}
+          <div class="item-control item-delete" title="Delete Item">
+            <i class="fa fa-trash"></i>
+          </div>
+        </div>
+        <div style="flex-basis: 100%; width:0"></div>
+      </li>
+      {{/each}}
+    {{/each}}
+</div>
