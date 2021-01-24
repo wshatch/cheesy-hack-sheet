@@ -208,3 +208,7 @@ Actor5e.prototype.useSpell = async function(item, {configureDialog=true}={}) {
     })
   }
 }
+
+DND5E.CHARACTER_EXP_LEVELS =  [
+  0, 1500, 3000, 5000, 12000, 30000, 50000, 80000, 120000, 150000, 300000, 500000,
+    750000, 1000000, 1200000, 1500000, 3000000, 4000000, 5000000, 6000000]
