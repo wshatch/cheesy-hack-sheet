@@ -155,7 +155,7 @@ Actor5e.prototype._computeSpellcastingProgression = function (actorData){
   const superComputeSpellProg =  oldComputeSpellcastingProgression.bind(this)
 
   if(actorData.type !== 'npc'){
-    const currentCantripSpells = actorData.data.spells["spell0"].value
+    const currentCantripSpells = (actorData.data.spells["spell0"] || {}).value
     superComputeSpellProg(actorData)
     const cantripMax = computeCantripMax(actorData)
     actorData.data.spells["spell0"] = {value: currentCantripSpells, max: cantripMax}
