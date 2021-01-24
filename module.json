@@ -3,11 +3,11 @@
 	"title": "Cheesy's hack",
 	"description": "Uses the character sheet for cheesy's homebrew",
 	"author": "Cheesy",
-	"version": "1.0.4",
+	"version": "1.0.5",
     "minimumCoreVersion": "0.5.0",
 	"systems": ["dnd5e"],
 	"esmodules": ["./cheesy_hack.js"],
     "styles": ["./styles/cheesy-sheet.css"],
     "manifest": "https://raw.githubusercontent.com/wshatch/cheesy-hack-sheet/master/module.json",
-    "download": "https://github.com/wshatch/cheesy-hack-sheet/archive/v1.0.4.zip"
+    "download": "https://github.com/wshatch/cheesy-hack-sheet/archive/v1.0.5.zip"
 }

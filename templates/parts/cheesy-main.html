@@ -141,9 +141,15 @@
             <th> Load </th>
             <th> Charges </th>
           </tr>
-          {{#each mundaneItems as |item| }}
-          <tr>
-            <td> {{ item.name }} </td>
+          {{#each equippedMundaneItems as |item| }}
+          <tr class="item" data-item-id="{{item.id}}" draggable=true>
+            <td class="item-name rollable"> 
+              <div class="item-image" style="background-image: url({{item.image}})">
+                <i class="fa fa-dice-d20"></i>
+              </div>
+              {{item.name}} 
+            </td>
+
             <td> {{ item.load }} </td>
             <td> {{ item.charges }} </td>
           </tr>

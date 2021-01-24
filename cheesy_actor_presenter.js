@@ -267,6 +267,10 @@ export default class ActorPresenter {
       .map(item => new ItemPresenter(this.actor.getOwnedItem(item._id), this.actor))
   }
 
+  get equippedMundaneItems() {
+    return this.mundaneItems.filter( item => item.equipped)
+  }
+
   get magicalItems(){
     const mundaneRarities = ["", "Common", "Uncommon"]
     const badTypes = ["spell", "feat", "class", "weapon"]
