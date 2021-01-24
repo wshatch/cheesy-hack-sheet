@@ -30,9 +30,9 @@ export default class ItemPresenter {
   }
 
   get charges(){
-    const uses = this.item.data.uses
+    const uses = this.item.data.data.uses
 
-    if(uses) {
+    if(uses && uses.max != 0) {
       return uses.value
     }
 
