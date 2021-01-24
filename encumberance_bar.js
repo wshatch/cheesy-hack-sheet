@@ -4,12 +4,19 @@ export default class EncumberanceBar {
   }
 
   get magicalItemsLoad() {
-    this._magicalItemsLoad = this._magicalItemsLoad || this.actorPresenter.magicalItems.reduce((acc, item) => acc + item.load, 0)
+    this._magicalItemsLoad = this._magicalItemsLoad || this._calculateLoad(this.actorPresenter.magicalItems)
     return this._magicalItemsLoad
   }
 
+  _calculateLoad(items){
+    return items
+      .filter(item => item.equipped)
+      .reduce((acc, item) => acc + item.load, 0)
+  }
+
   get mundaneItemsLoad() {
-    return this.actorPresenter.mundaneItems.reduce((acc, item) => acc + item.load, 0)
+    this._mundaneItemsLoad = this._mundaneItemsLoad || this._calculateLoad(this.actorPresenter.mundaneItems)
+    return this._mundaneItemsLoad
   }
 
   get weaponsLoad() {
