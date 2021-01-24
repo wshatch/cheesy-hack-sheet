@@ -36,8 +36,10 @@ export default class ItemPresenter {
       return uses.value
     }
 
+    const quantity = this.item.data.data.quantity
+
     const consume = this.item.data.data.consume
-    if(!consume) return "N/A"
+    if(!consume || !consume.target || consume.target === "") return quantity
     const ammoId = consume.target
     const ammoObj = this.actor.getOwnedItem(ammoId)
     if(!ammoObj) return "N/A";
