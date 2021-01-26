@@ -103,7 +103,7 @@
             <li> 
               {{resource.title}}
                 <div style="display: flex; flex-direction: row">
-                  <input class="current-resource" value={{resource.value}} />
+                  <input name="{{resource.name}}" class="current-resource" value={{resource.value}} data-dtype="Number" />
                   /
                   {{resource.max}}
                 </div>
@@ -119,11 +119,11 @@
             <span> Name </span>
           </li>
           {{#each activeFeatures as |feat|}}
-            <li class="item" data-item-id="{{feat.id}}" draggable=true> 
+            <li class="item rollable" data-item-id="{{feat.id}}" draggable=true> 
               <div class="item-image" style="background-image: url({{feat.image}})">
                 <i class="fa fa-dice-d20"></i>
               </div>
-              {{feat.name}} 
+                {{feat.name}} 
             </li>
           {{/each}}
         </ul>

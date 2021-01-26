@@ -55,12 +55,15 @@ export default class ActorPresenter {
       return []
     }
 
+    const indexToNames = ["primary", "secondary", "tertiary"]
+
     const filteredResources = resources
-      .filter( resource => resource.label != "")
-      .map( resource => ({
+      .filter( resource => resource.label && resource.label != "")
+      .map( (resource, index) => ({
         title: resource.label,
         max: resource.max,
-        value: resource.value 
+        value: resource.value,
+        name: `data.resources.${indexToNames[index]}.value`,
       }))
 
     return filteredResources
@@ -76,15 +79,20 @@ export default class ActorPresenter {
 
   get spells() {
     const spells = this.items
-    .filter(item => item.type == "spell")
-    .reduce(this.groupSpells.bind(this), {})
-    return spells
+      .filter(item => item.type === "spell")
+      .sort((a, b) => a.name.localeCompare(b.name))
+      .reduce(this.groupSpells.bind(this), {})
+
+    return this._sortObject(spells)
   }
 
   get preparedSpells() {
-    return this.items
+    const prepSpells = this.items
       .filter(item => item.type == "spell"  && (this.isPrepared(item) || this.isCantrip(item)))
+      .sort((a, b) => a.name.localeCompare(b.name))
       .reduce(this.groupSpells.bind(this), {})
+
+      return this._sortObject(prepSpells)
   }
 
   get preparedSpellCount() {
@@ -142,6 +150,7 @@ export default class ActorPresenter {
   get weapons(){
     return this.items
     .filter(item => item.type == "weapon" && item.data.equipped)
+    .sort((a, b) => a.name.localeCompare(b.name))
     .map(item => {
       const realItem = this.actor.getOwnedItem(item._id) 
       return new WeaponPresenter(realItem, this.actor, this.data.abilities, this.proficency)
@@ -159,6 +168,7 @@ export default class ActorPresenter {
   get activeFeatures(){
     return this.items
     .filter(item => item.type == "feat" && item.data.activation.type != "")
+    .sort((a, b) => a.name.localeCompare(b.name))
     .map( item => {
       const realItem = this.actor.getOwnedItem(item._id) 
       const presenter = new ItemPresenter(realItem, this.actor)
@@ -252,6 +262,7 @@ export default class ActorPresenter {
   get features() {
     return this.items
     .filter(item => item.type == "feat")
+    .sort((a, b) => a.name.localeCompare(b.name))
     .map( item => {
       const realItem = this.actor.getOwnedItem(item._id) 
       const presenter = new ItemPresenter(realItem, this.actor)
@@ -264,6 +275,7 @@ export default class ActorPresenter {
     const badTypes = ["weapon"]
     return this.items
       .filter(item => mundaneRarities.includes(item.data.rarity) && !badTypes.includes(item.type))
+      .sort((a, b) => a.name.localeCompare(b.name))
       .map(item => new ItemPresenter(this.actor.getOwnedItem(item._id), this.actor))
   }
 
@@ -292,6 +304,7 @@ export default class ActorPresenter {
   get classes(){
     this._classes = this._classes ||this.items
     .filter(item => item.type == "class")
+    .sort((a, b) => a.name.localeCompare(b.name))
     .map(item => ({
       levels: item.data.levels,
       subclass: item.data.subclass || "",
@@ -308,6 +321,7 @@ export default class ActorPresenter {
   get allWeapons() {
     return this.items
     .filter(item => item.type == "weapon")
+    .sort((a, b) => a.name.localeCompare(b.name))
     .map(item => {
       const realItem = this.actor.getOwnedItem(item._id) 
       return new WeaponPresenter(realItem, this.actor, this.data.abilities, this.proficency)
@@ -320,6 +334,13 @@ export default class ActorPresenter {
       Mundane: this.mundaneItems,
       Magical: this.magicalItems
     }
+  }
+
+  _sortObject(obj) {
+    return Object.keys(obj).sort().reduce(function (result, key) {
+      result[key] = obj[key]
+      return result
+    }, {})
   }
 }
 
